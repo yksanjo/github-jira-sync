@@ -1,6 +1,22 @@
 # GitHub ↔ Jira Sync
 
-A production-ready, open-source two-way sync tool between GitHub issues/PRs and Jira tasks. Built with TypeScript, featuring smart mapping logic, resilient background workers, and an API-first architecture.
+<div align="center">
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
+![Node.js](https://img.shields.io/badge/Node.js-20+-green)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![GitHub stars](https://img.shields.io/github/stars/yksanjo/github-jira-sync?style=social)
+
+**A production-ready, open-source two-way sync tool between GitHub issues/PRs and Jira tasks**
+
+Built with TypeScript, featuring smart mapping logic, resilient background workers, and an API-first architecture.
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-usage) • [Contributing](#-contributing)
+
+[⭐ Star on GitHub](https://github.com/yksanjo/github-jira-sync) • [📖 Documentation](./README.md) • [🚀 Quick Start](./QUICKSTART.md) • [💬 Discussions](https://github.com/yksanjo/github-jira-sync/discussions)
+
+</div>
 
 ## ✨ Features
 
