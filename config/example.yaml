@@ -1,0 +1,45 @@
+# Example GitHub ↔ Jira Sync Configuration
+# Copy this file and customize for your needs
+
+name: my-sync-config
+github:
+  owner: your-org
+  repo: your-repo
+jira:
+  projectKey: PROJ
+
+mappings:
+  # Map GitHub labels to Jira statuses
+  status:
+    "To Do": "To Do"
+    "In Progress": "In Progress"
+    "Done": "Done"
+    "bug": "Bug"
+    "feature": "Feature Request"
+  
+  # Map GitHub usernames to Jira account IDs
+  users:
+    # "github-username": "jira-account-id-12345"
+  
+  # Map custom fields (optional)
+  fields:
+    # "github-field": "jira-field"
+  
+  # Statuses to ignore (won't sync)
+  ignoreStatuses:
+    - "Won't Fix"
+    - "Duplicate"
+  
+  # Labels to ignore (won't sync)
+  ignoreLabels:
+    - "wontfix"
+    - "duplicate"
+
+# Sync priority: github_first, jira_first, or timestamp
+syncPriority: timestamp
+
+# Enable/disable sync features
+syncComments: true
+syncLabels: true
+syncAssignees: true
+

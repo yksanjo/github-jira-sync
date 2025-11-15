@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SyncMapping {
+  id                String   @id @default(cuid())
+  githubIssueNumber Int
+  githubRepo        String
+  githubOwner       String
+  jiraIssueKey      String   @unique
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([githubOwner, githubRepo, githubIssueNumber])
+  @@index([jiraIssueKey])
+  @@index([githubOwner, githubRepo, githubIssueNumber])
+}
+
+model SyncEvent {
+  id            String   @id @default(cuid())
+  eventId       String   @unique
+  source        String   // "github" or "jira"
+  eventType     String   // "issue.created", "issue.updated", "comment.created", etc.
+  githubIssueId String?
+  jiraIssueKey  String?
+  payload       Json
+  processed     Boolean  @default(false)
+  processedAt   DateTime?
+  createdAt     DateTime @default(now())
+
+  @@index([eventId])
+  @@index([source, processed])
+  @@index([githubIssueId])
+  @@index([jiraIssueKey])
+}
+
+model SyncConfig {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  config    Json
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SyncLock {
+  id          String   @id @default(cuid())
+  resourceId  String   @unique // e.g., "github:owner/repo#123" or "jira:PROJ-123"
+  lockedBy    String
+  lockedAt    DateTime @default(now())
+  expiresAt   DateTime
+
+  @@index([resourceId, expiresAt])
+}
+

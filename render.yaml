@@ -1,0 +1,75 @@
+services:
+  - type: web
+    name: github-jira-sync-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: github-jira-sync-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: github-jira-sync-redis
+          type: redis
+          property: connectionString
+      - key: GITHUB_OAUTH_TOKEN
+        sync: false
+      - key: GITHUB_WEBHOOK_SECRET
+        sync: false
+      - key: JIRA_BASE_URL
+        sync: false
+      - key: JIRA_EMAIL
+        sync: false
+      - key: JIRA_API_TOKEN
+        sync: false
+      - key: JIRA_WEBHOOK_SECRET
+        sync: false
+
+  - type: worker
+    name: github-jira-sync-worker
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    region: oregon
+    dockerCommand: npm run worker
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: github-jira-sync-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: github-jira-sync-redis
+          type: redis
+          property: connectionString
+      - key: GITHUB_OAUTH_TOKEN
+        sync: false
+      - key: JIRA_BASE_URL
+        sync: false
+      - key: JIRA_EMAIL
+        sync: false
+      - key: JIRA_API_TOKEN
+        sync: false
+
+databases:
+  - name: github-jira-sync-db
+    plan: starter
+    databaseName: github_jira_sync
+    user: github_jira_sync
+
+  - name: github-jira-sync-redis
+    plan: starter
+    maxmemoryPolicy: allkeys-lru
+
