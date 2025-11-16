@@ -128,3 +128,6 @@ export async function syncRoutes(fastify: FastifyInstance) {
   });
 }
 
+
+
+

@@ -150,3 +150,6 @@ export async function configRoutes(fastify: FastifyInstance) {
   });
 }
 
+
+
+

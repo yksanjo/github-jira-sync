@@ -47,3 +47,6 @@ export const appConfig: Config = ConfigSchema.parse({
   syncPriority: process.env.SYNC_PRIORITY,
 });
 
+
+
+

@@ -42,3 +42,6 @@ echo "2. Run 'npm run sync:init' to create a sync configuration"
 echo "3. Start the API: 'npm run dev'"
 echo "4. Start the worker: 'npm run worker' (in another terminal)"
 
+
+
+

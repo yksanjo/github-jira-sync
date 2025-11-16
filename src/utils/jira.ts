@@ -51,3 +51,6 @@ export function jiraDocumentToText(doc: unknown): string {
   return docObj.content.map(extractText).join('\n').trim();
 }
 
+
+
+

@@ -73,3 +73,6 @@ syncAssignees: ${defaultConfig.syncAssignees}
   console.log('📝 Please edit the file with your GitHub and Jira details');
 }
 
+
+
+
