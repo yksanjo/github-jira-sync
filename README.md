@@ -1,5 +1,12 @@
 # github-jira-sync
 
+Production-grade project scaffold focused on reliability, maintainability, and fast onboarding.
+
+[![CI](https://img.shields.io/github/actions/workflow/status/yksanjo/github-jira-sync/ci.yml?branch=main&label=ci)](https://github.com/yksanjo/github-jira-sync/actions)
+![License](https://img.shields.io/github/license/yksanjo/github-jira-sync)
+![Last Commit](https://img.shields.io/github/last-commit/yksanjo/github-jira-sync)
+![Repo Size](https://img.shields.io/github/repo-size/yksanjo/github-jira-sync)
+
 ## Detailed Description
 
 github-jira-sync is maintained as an industry-grade software project with production-ready engineering practices.  
